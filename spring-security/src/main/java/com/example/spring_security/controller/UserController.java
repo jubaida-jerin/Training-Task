@@ -28,16 +28,20 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
-        User loggedInUser = userService.login(user);
-        if (loggedInUser != null) {
-            return ResponseEntity.ok("Login successful");
-        } else {
-            return ResponseEntity.status(401).body("Invalid username or password");
-        }
-    }
+//    @PostMapping("/login")
+//    public ResponseEntity<String> login(@RequestBody User user) {
+//        User loggedInUser = userService.login(user);
+//        if (loggedInUser != null) {
+//            return ResponseEntity.ok("Login successful");
+//        } else {
+//            return ResponseEntity.status(401).body("Invalid username or password");
+//        }
+//    }
 
+    @PostMapping("/login")
+    public String login(@RequestBody User user) {
+        return userService.verifyUser(user);
+    }
 
 
 }
